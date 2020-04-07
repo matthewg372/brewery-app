@@ -18,6 +18,14 @@ server.use(session({
   saveUninitialized: false
 }))
 
+server.use((req, res, next) => {
+	res.locals.loggedIn = req.session.loggedIn
+	res.locals.username = req.session.username
+	res.locals.message = req.session.message
+	req.session.message = undefined
+	next()
+})
+
 const authController = require(`./controllers/authController.js`)
 server.use(`/auth`, authController)
 

@@ -1,0 +1,19 @@
+<%- include(`../partials/header.ejs`)%>
+
+<h3><strong>Enter Registration Info below :</strong></h2>
+
+	<h5><%=message%></h5>
+
+	<form method="POST" action="/auth/login">
+		<fieldset>
+			<label for="username">Username :</label>
+			<input id="username" type="text" name="username" placeholder="Enter username">
+		</fieldset>
+		<fieldset>
+			<label for="password">Password :</label>
+			<input id="password" type="text" name="password" placeholder="Enter password">
+		</fieldset>
+		<button>Log in</button>
+	</form>
+
+	<%- include(`../partials/footer.ejs`)%>
