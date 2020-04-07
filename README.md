@@ -2,16 +2,17 @@
 # brewery-app
 
 	1. User will be able to register
-	2. user will be able to log in
-	3. user will be able to log out
-	4. user will be able to see breweries when not logged in 
-	5. user will be able to see the beer selection
-	6. user will be able to post their own brewery if logged in
-	7. user can put there address
-	8. user will be able to add their beer selection
-	9. users will be able to write a description
-	10. user will not be able to make reviews unless they are logged in
-	11. users will be able to rate the beer with the review
+	2. if user already exists text appears user name already exists or password is wrong
+	3. user will be able to log in
+	4. user will be able to log out
+	5. user will be able to see breweries when not logged in 
+	6. user will be able to see the beer selection
+	7. user will be able to post their own brewery if logged in
+	8. user can put there address
+	9. user will be able to add their beer selection
+	10. users will be able to write a description
+	11. user will not be able to make reviews unless they are logged in
+	12. users will be able to rate the beer with the review
 
 
 
