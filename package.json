@@ -24,6 +24,8 @@
   "homepage": "https://github.com/joshuacubas/brewery-app#readme",
   "dependencies": {
     "dotenv": "^8.2.0",
-    "express": "^4.17.1"
+    "ejs": "^3.0.2",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.7"
   }
 }
