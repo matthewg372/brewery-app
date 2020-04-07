@@ -1,0 +1,29 @@
+{
+  "name": "brewery-app",
+  "version": "1.0.0",
+  "description": "BreweryApp",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joshuacubas/brewery-app.git"
+  },
+  "keywords": [
+    "project2",
+    "sessions",
+    "database",
+    "whoknows"
+  ],
+  "author": "JoshC and MattG",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joshuacubas/brewery-app/issues"
+  },
+  "homepage": "https://github.com/joshuacubas/brewery-app#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  }
+}
