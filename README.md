@@ -14,6 +14,8 @@
 	11. users will be able to rate the beer with the review
 
 
+<img src=“pictures/IMG_20200406_182346.jpg”
+     alt=“Markdown Monster icon”
+     style=“float: left; margin-right: 10px;” />
 
-![images](pictures/IMG_20200406_182346.jpg)
 
