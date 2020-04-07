@@ -2,6 +2,7 @@ require(`dotenv`).config()
 const express = require(`express`)
 const server = express()
 const PORT = process.env.PORT
+require(`./db/db.js`)
 
 server.use(express.static(`public`))
 
