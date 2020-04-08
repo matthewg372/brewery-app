@@ -17,7 +17,10 @@
 <h5><strong>Drinks:</strong></h5>
 
 	<ul>
-		<li>drink name etc...</li>
+		<%drinks.forEach(drink=>{%>
+			<li><a href=""><%=drink.name%></a></li>
+		<%})%>
+		
 	</ul>
 	<a href="/drink/new">Add a Drink</a>
 

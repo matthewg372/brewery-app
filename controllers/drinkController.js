@@ -22,7 +22,7 @@ router.post('/new', async (req, res, next) => {
 		const drinkToCreate = {
 			name: req.body.name,
 			description: req.body.description,
-			brewery: req.params.id
+			brewery: req.body.brewery
 		}
 		console.log("drinkToCreate",drinkToCreate)
 		const createdDrink = await Drink.create(drinkToCreate)

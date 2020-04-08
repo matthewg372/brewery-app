@@ -2,6 +2,7 @@ const express =  require(`express`)
 const router = express.Router()
 const Brewery = require(`../models/brewery`)
 const User = require(`../models/user`)
+const Drink = require(`../models/drink`)
 
 router.get("/manage", async (req, res,next) => {
 	try{
@@ -44,9 +45,11 @@ router.post("/manage/new", async (req,res,next) => {
 router.get('/:id', async(req, res, next) => {
 	const foundUser = await User.findById(req.params.userId)
 	const foundBrewery = await Brewery.findById(req.params.id).populate('user')
+	const foundDrinks = await Drink.find({brewery:foundBrewery._id})
 	res.render('brewery/show.ejs', {
 		user: foundUser,
-		brewery: foundBrewery
+		brewery: foundBrewery,
+		drinks:foundDrinks
 	})
 })
 
