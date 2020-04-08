@@ -1,1 +1,18 @@
-new.ejs
+<%- include(`../partials/header.ejs`)%>
+
+<h3>Add a New Drink: </h3>
+
+<form method="POST" action="/drink/new">
+	<fieldset>
+		<label for="name">Name:</label>
+		<input id="name" placeholder="Enter Drink Name" type="text" name="name">
+	</fieldset>
+	<fieldset>
+		<label for="description">Description:</label>
+		<input id="description" placeholder="Enter Drink Description" type="text" name="description">
+	</fieldset>
+	<button>Create New Drink</button>
+
+</form>
+
+<%- include(`../partials/footer.ejs`)%>

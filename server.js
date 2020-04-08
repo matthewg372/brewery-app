@@ -33,6 +33,9 @@ const authController = require(`./controllers/authController.js`)
 server.use(`/auth`, authController)
 const breweryController = require(`./controllers/breweryController.js`)
 server.use(`/brewery`, breweryController)
+const drinkController = require(`./controllers/drinkController.js`)
+server.use(`/drink`, drinkController)
+
 
 server.get(`/`, (req,res) => {
 	res.render(`home.ejs`)
