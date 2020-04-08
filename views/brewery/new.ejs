@@ -1,0 +1,29 @@
+<%- include(`../partials/header.ejs`)%>
+
+<h3><strong>Add New Brewery</strong></h2>
+	<form method="POST" action="/brewery/manage/new">
+		<fieldset>
+			<label for="name">Name: </label>
+			<input id="name" type="text" name="name" placeholder="Enter brewery Name">
+		</fieldset>
+		<fieldset>
+			<label for="address">Street Address: </label>
+			<input id="address" type="text" name="address" placeholder="Enter brewery ## Street Name">
+		</fieldset>
+		<fieldset>
+			<label for="city">City: </label>
+			<input id="city" type="text" name="city" placeholder="Enter brewery City">
+		</fieldset>
+		<fieldset>
+			<label for="state">State: </label>
+			<input id="state" type="text" name="state" placeholder="Enter brewery State">
+		</fieldset>
+			<fieldset>
+			<label for="zipcode">Zipcode: </label>
+			<input id="zipcode" type="number" name="zipcode" placeholder="Enter brewery Zipcode">
+		</fieldset>
+		<button>Add</button>
+	</form>
+	
+
+<%- include(`../partials/footer.ejs`)%>

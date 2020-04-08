@@ -22,9 +22,11 @@ router.post(`/login`, async (req, res, next) => {
 			const logInInfoIsValid = bcrypt.compareSync(req.body.password,foundUser.password);
 			if(logInInfoIsValid){
 				req.session.loggedIn = true
-				req.session.userId = foundUser._Id
+				req.session.admin = foundUser.admin
+				req.session.userId = foundUser._id
 				req.session.username = foundUser.username
 				req.session.message = `${foundUser.username} has logged In`
+						
 				res.redirect(`/`)
 			}
 			else{

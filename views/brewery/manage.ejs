@@ -1,0 +1,19 @@
+<%- include(`../partials/header.ejs`)%>
+
+<h3><strong>Manage Your Breweries</strong></h2>
+
+	<div>
+		<ul>
+		<% breweries.forEach(brewery =>{%>
+			
+			<li> <a href="/brewery/<%= brewery.id%>"><%=brewery.name%></a>, (<%=brewery.city %>, <%=brewery.state %>)</li>
+
+
+		<%})%>
+		</ul>
+		
+	</div>
+	<a href="/brewery/manage/new">add new brewery</a>
+	
+
+<%- include(`../partials/footer.ejs`)%>
