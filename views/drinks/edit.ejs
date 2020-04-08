@@ -1,0 +1,41 @@
+<%- include(`../partials/header.ejs`)%>
+
+<h3>Edit Drink: </h3>
+
+<form method="POST" action="/drink/<%=drink.id%>?_method=PUT">
+	<fieldset>
+		<label for="name">Name:</label>
+		<input 
+			id="name" 
+			placeholder="Enter Drink Name" 
+			type="text" 
+			name="name" 
+			value="<%=drink.name%>">
+	</fieldset>
+	<fieldset>
+		<label for="description">Description:</label>
+		<input 
+			id="description" 
+			placeholder="Enter Drink Description" 
+			type="text" 
+			name="description" 
+			value="<%=drink.description%>">
+	</fieldset>
+	<fieldset>
+		<label for="brewery">Select Brewery Location</label>
+		<select name="brewery" id="brewery">
+			<%breweries.forEach(place => {%>
+			<% console.log("place",place)%>
+			<% console.log("place.name",place.name)%>
+
+				<option value="<%=place.id%>"><%=place.name%></option>
+			<%})%>
+			
+		</select>
+
+	</fieldset>
+	<button>Edit Drink</button>
+
+</form>
+
+<%- include(`../partials/footer.ejs`)%>

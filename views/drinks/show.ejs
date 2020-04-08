@@ -1,0 +1,20 @@
+<%- include(`../partials/header.ejs`)%>
+<h1>Show page for <%=drink.name%></h1>
+<ul>
+	<li><strong>Description:</strong> <%=drink.description%></li>
+	<li>Date Drink was posted:</li>
+	<li>Breweries that carry :</li>
+	<li><strong>Comments:</strong>
+--comments--</li>
+</ul>
+
+Change below in ejs 
+<a href="/drink/<%=drink.id%>/edit">Edit Brewery Info</a>
+<form method="POST" action="/brewery/<%=drink.id%>?_method=DELETE">
+	<button>delete</button>
+</form>
+
+ 
+
+
+<%- include(`../partials/footer.ejs`)%>

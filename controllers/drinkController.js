@@ -34,6 +34,33 @@ router.post('/new', async (req, res, next) => {
 	}
 })
 
+router.get(`/:id`,async (req,res, next) => {
+	try{
+		const foundDrink = await Drink.findById(req.params.id)
+		res.render(`drinks/show.ejs`,{drink: foundDrink})
+	}
+	catch(error){
+		next(error)
+	}
+	
+})
+
+router.get(`/:id/edit`,async (req,res, next) => {
+	try{
+		const foundBreweries = await Brewery.find({user:req.session.userId})
+		const foundDrink = await Drink.findById(req.params.id)
+		res.render(`drinks/edit.ejs`,{
+			drink: foundDrink, 
+			breweries: foundBreweries
+		})
+	}
+	catch(error){
+		next(error)
+	}
+	
+})
+
+
 
 
 
