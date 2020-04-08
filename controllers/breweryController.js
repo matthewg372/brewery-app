@@ -21,7 +21,9 @@ router.get('/manage/new', (req, res) => {
 
 router.post("/manage/new", async (req,res,next) => {
 	try{
-		console.log("locals", res.locals);
+
+		//Change this to not have two of the same breweries made by users//
+		
 		const breweryToCreate = {
 			name: req.body.name,
 			city: req.body.city,

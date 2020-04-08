@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const drinkSchema = new mongoose.Schema({
-		name: {
+	name: {
 		type: String,
 		required: true,
 	},

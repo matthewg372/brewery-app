@@ -11,6 +11,19 @@
 		<label for="description">Description:</label>
 		<input id="description" placeholder="Enter Drink Description" type="text" name="description">
 	</fieldset>
+	<fieldset>
+		<label for="brewery">Select Brewery Location</label>
+		<select name="brewery" id="brewery">
+			<%foundBreweries.forEach(place => {%>
+			<% console.log("place",place)%>
+			<% console.log("place.name",place.name)%>
+
+				<option value="<%=place.id%>"><%=place.name%></option>
+			<%})%>
+			
+		</select>
+
+	</fieldset>
 	<button>Create New Drink</button>
 
 </form>
