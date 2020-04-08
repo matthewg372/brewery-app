@@ -65,7 +65,7 @@ router.get(`/:id/edit`, async (req, res, next) => {
 
 router.delete(`/:id`, async (req, res, next) => {
 	try{
-		const deletedBrewery = await Brewery.findOneAndRemove(req.params.id)
+		const deletedBrewery = await Brewery.findByIdAndRemove(req.params.id)
 		res.redirect('/brewery/manage')
 	}
 	catch(error){

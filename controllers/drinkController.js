@@ -59,6 +59,16 @@ router.get(`/:id/edit`,async (req,res, next) => {
 	}
 })
 
+router.delete(`/:id`, async (req, res, next) => {
+	try{
+		const deletedDrink = await Drink.findByIdAndRemove(req.params.id)
+		res.redirect(`/brewery/manage`)
+	}
+	catch(error){
+		next(error)
+	}
+})
+
 router.put(`/:id`,async (req, res, next) => {
 	try{
 		const updatedDrink = await Drink.findByIdAndUpdate(req.params.id,req.body,{new:true})
@@ -68,6 +78,7 @@ router.put(`/:id`,async (req, res, next) => {
 		next(error)
 	}
 })
+
 
 
 
