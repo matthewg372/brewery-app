@@ -1,0 +1,30 @@
+<%- include(`../partials/header.ejs`)%>
+
+<h3><strong>Edit Brewery</strong></h2>
+	
+	<form method="POST" action="/brewery/<%=brewery.id%>?_method=PUT">
+		<fieldset>
+			<label for="name">Name: </label>
+			<input id="name" type="text" name="name" placeholder="Enter brewery Name" value="<%=brewery.name%>">
+		</fieldset>
+		<fieldset>
+			<label for="address">Street Address: </label>
+			<input id="address" type="text" name="address" placeholder="Enter brewery ## Street Name" value="<%=brewery.address%>" >
+		</fieldset>
+		<fieldset>
+			<label for="city">City: </label>
+			<input id="city" type="text" name="city" placeholder="Enter brewery City" value="<%=brewery.city%>">
+		</fieldset>
+		<fieldset>
+			<label for="state">State: </label>
+			<input id="state" type="text" name="state" placeholder="Enter brewery State" value="<%=brewery.state%>">
+		</fieldset>
+			<fieldset>
+			<label for="zipcode">Zipcode: </label>
+			<input id="zipcode" type="number" name="zipcode" placeholder="Enter brewery Zipcode" value="<%=brewery.zipcode%>">
+		</fieldset>
+		<button>Update Info</button>
+	</form>
+	
+
+<%- include(`../partials/footer.ejs`)%>

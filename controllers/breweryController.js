@@ -31,7 +31,7 @@ router.post("/manage/new", async (req,res,next) => {
 			user: req.session.userId
 		}
 		const createdBrewery = await Brewery.create(breweryToCreate)
-		res.session.message = `${req.body.name}`
+		req.session.message = `${req.body.name}`
 		res.redirect('/brewery/manage')
 
 	}catch(err){
@@ -47,6 +47,56 @@ router.get('/:id', async(req, res, next) => {
 		brewery: foundBrewery
 	})
 })
+
+router.get(`/:id/edit`, async (req, res, next) => {
+	try{
+		const foundBrewery = await Brewery.findById(req.params.id)
+		res.render(`brewery/edit.ejs`, {brewery:foundBrewery})
+	}
+	catch(error){
+		next(error)
+	}
+})
+
+router.delete(`/:id`, async (req, res, next) => {
+	try{
+		const deletedBrewery = await Brewery.findOneAndRemove(req.params.id)
+		res.redirect('/brewery/manage')
+	}
+	catch(error){
+		next(error)
+	}
+})
+
+router.put(`/:id`, async (req, res, next) => {
+	try{
+
+	  	const updatedBrewery = await Brewery.findByIdAndUpdate(req.params.id,req.body,{new:true})
+	  	//maybe need ^^.populate
+	  	res.redirect('/brewery/manage')
+	}
+	catch(error){
+		next(error)
+	}
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 module.exports = router

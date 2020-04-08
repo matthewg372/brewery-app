@@ -1,12 +1,23 @@
 <%- include('../partials/header.ejs')%>
 <h3><strong><%=brewery.name%></strong></h3>
-<ul>
+
 
 			
-			<li>, (<%=brewery.city %>, <%=brewery.state %>)</li>
-				<a href="">edit</a>
-				<button>delete</button>
+<p>Address: <%=brewery.address%>, <%=brewery.city %>, <%=brewery.state %>, <%=brewery.zipcode%>)</p>
+
+
+<a href="/brewery/<%=brewery.id%>/edit">Edit Brewery Info</a>
+<form method="POST" action="/brewery/<%=brewery.id%>?_method=DELETE">
+	<button>delete</button>
+</form>
+		
 	
-</ul>
+
+
+<h5><strong>Drinks:</strong></h5>
+
+	<ul>
+		<li>drink name etc...</li>
+	</ul>
 
 <%- include('../partials/footer.ejs')%>
