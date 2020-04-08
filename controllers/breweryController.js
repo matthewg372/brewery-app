@@ -39,14 +39,14 @@ router.post("/manage/new", async (req,res,next) => {
 	}
 })
 
-// router.get('/:id', async(req, res, next) => {
-// 	const foundUser = await User.findById(req.params.userId)
-// 	const foundBrewery = await Brewery.findById(req.params.id).populate('user')
-// 	res.render('brewery/show.ejs', {
-// 		user: foundUser,
-// 		brewery: foundBrewery
-// 	})
-// })
+router.get('/:id', async(req, res, next) => {
+	const foundUser = await User.findById(req.params.userId)
+	const foundBrewery = await Brewery.findById(req.params.id).populate('user')
+	res.render('brewery/show.ejs', {
+		user: foundUser,
+		brewery: foundBrewery
+	})
+})
 
 
 module.exports = router
