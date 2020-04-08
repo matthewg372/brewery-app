@@ -57,7 +57,16 @@ router.get(`/:id/edit`,async (req,res, next) => {
 	catch(error){
 		next(error)
 	}
-	
+})
+
+router.put(`/:id`,async (req, res, next) => {
+	try{
+		const updatedDrink = await Drink.findByIdAndUpdate(req.params.id,req.body,{new:true})
+		res.redirect(`/brewery/${updatedDrink.brewery}`)
+	}
+	catch(error){
+		next(error)
+	}
 })
 
 

@@ -25,10 +25,13 @@
 		<label for="brewery">Select Brewery Location</label>
 		<select name="brewery" id="brewery">
 			<%breweries.forEach(place => {%>
-			<% console.log("place",place)%>
-			<% console.log("place.name",place.name)%>
-
-				<option value="<%=place.id%>"><%=place.name%></option>
+				<option 
+					value="<%=place.id%>"
+					<%console.log("!!",drink.place)%>
+					<% if(place.id == drink.brewery) { %>
+                	selected
+              		<% } %>
+           			 ><%= place.name %></option>
 			<%})%>
 			
 		</select>
