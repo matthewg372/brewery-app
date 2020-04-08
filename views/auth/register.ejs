@@ -1,0 +1,22 @@
+<%- include(`../partials/header.ejs`)%>
+
+<h3><strong>Enter Registration Info below :</strong></h2>
+
+	<h5><%=message%></h5>
+
+	<form method="POST" action="/auth/register">
+		<fieldset>
+			<label for="username">Choose a username :</label>
+			<input id="username" type="text" name="username" placeholder="Enter username">
+		</fieldset>
+		<fieldset>
+			<label for="password">Choose a password :</label>
+			<input id="password" type="text" name="password" placeholder="Enter password">
+		</fieldset>
+		<fieldset>
+			<label for="admin">Is user a brewery owner?</label>
+			<input id="admin" type="checkbox" name="admin">
+		</fieldset>
+		<button>Submit Registration Info</button>
+	</form>
+<%- include(`../partials/footer.ejs`)%>
