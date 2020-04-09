@@ -39,7 +39,15 @@ router.post('/:id', async (req,res,next) => {
 
 })
 
-router.get('/:id')
+router.get('/:id/edit', async (req,res,next) => {
+	try{
+		const foundComment = await Comment.findById(req.params.id)
+		res.render('comment/edit.ejs', {comment: foundComment})
+	
+	}catch(err){
+		next(err)	
+	}
+})
 
 
 module.exports = router

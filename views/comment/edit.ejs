@@ -1,17 +1,23 @@
 <%- include('../partials/header.ejs')%>
-	<form method="POST" action="/comment/<%= drink.id %>">
+
+<h3>Edit comment for Drink:</h3>
+
+
+	<form method="POST" action="/comment/<%= comment.id %>?_method=PUT">
 		<fieldset>
 			<label for="title">Title:</label>
-			<input type="text" name="title" placeholder="Enter Title">
+			<input type="text" name="title" value="<%= comment.title%>">
 		</fieldset>
 		<fieldset>
 			<label for="body">Review:</label>
-			<textarea type="textbox" name="body" placeholder="Enter Your Review"></textarea>
+			<textarea type="textbox" name="body"><%=comment.body%></textarea>
 		</fieldset>
 		<fieldset>
 			<label for="rating">Rating:</label>
-			<input type="number" name="rating" placeholder="out of 5"> / 5
+			<input type="number" name="rating" value="<%= comment.rating %>"> / 5
 		</fieldset>
 		<button>Add Comment</button>
 	</form>
+
+
 <%- include('../partials/footer.ejs')%>
