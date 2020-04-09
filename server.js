@@ -35,6 +35,8 @@ const breweryController = require(`./controllers/breweryController.js`)
 server.use(`/brewery`, breweryController)
 const drinkController = require(`./controllers/drinkController.js`)
 server.use(`/drink`, drinkController)
+const generalController = require(`./controllers/generalController.js`)
+server.use(`/general`, generalController)
 
 
 server.get(`/`, (req,res) => {

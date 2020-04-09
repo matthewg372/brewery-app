@@ -1,0 +1,20 @@
+<%- include(`../partials/header.ejs`)%>
+
+<h3><%= brewery.name %> </h3>
+<div>
+	<p><%= brewery.address %></p>
+	<p><%= brewery.city %>, <%= brewery.state %>, <%= brewery.zipcode %></p>
+</div>
+<div>
+	<h5>Drinks:</h5>
+	<ul>
+	<% drinks.forEach(drink => {%>
+		<li><a href="/general/drink/<%= drink.id %>"><%= drink.name %></a></li>
+
+
+	<%})%>
+	</ul>
+</div>
+
+
+<%- include(`../partials/footer.ejs`)%>

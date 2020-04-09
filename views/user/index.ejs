@@ -1,0 +1,15 @@
+<%- include(`../partials/header.ejs`)%>
+
+<h3>Breweries:</h3>
+<ul>
+	<% breweries.forEach(brewery => {%>
+		<li> <a href="/general/<%= brewery.id %>"><%= brewery.name %>  </a>(<%= brewery.city %>,<%= brewery.state %>)</li>
+
+
+	<%})%>
+
+</ul>
+
+
+
+<%- include(`../partials/footer.ejs`)%>
