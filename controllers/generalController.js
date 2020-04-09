@@ -10,16 +10,16 @@ router.get("/", async (req, res, next) => {
 	
 })
 
-// router.get(`/drink/:id`,async (req,res, next) => {
-// 	try{
-// 		const foundDrink = await Drink.findById(req.params.id).populate('brewery')
-// 		res.render(`user/drinkShowPage.ejs`,{drink: foundDrink})
-// 	}
-// 	catch(error){
-// 		next(error)
-// 	}
+router.get(`/drink/:id`,async (req,res, next) => {
+	try{
+		const foundDrink = await Drink.findById(req.params.id).populate('brewery')
+		res.render(`user/drinkShowPage.ejs`,{drink: foundDrink})
+	}
+	catch(error){
+		next(error)
+	}
 	
-// })
+})
 router.get("/:id", async (req, res, next) => {
 	const foundBrewery = await Brewery.findById(req.params.id).populate('user')
 	const foundDrinks = await Drink.find({brewery: foundBrewery._id})
