@@ -3,12 +3,12 @@
 
 
 		<%comments.forEach(comment=>{%>
-		<ul>
+		<ul class="commentsUL">
 			<li><strong>Drink Name:</strong> <%=comment.drink.name%></li>
-			<li><strong>Drink Description:</strong> <%=comment.drink.description%></li>
+			<li id="drinkDescription"><strong>Drink Description:</strong> <%=comment.drink.description%></li>
 			<li><strong>Comment Title:</strong> <%=comment.title%></li>
-			<li><strong>Rating:</strong> <%=comment.rating%> / 5</li>
 			<li><strong>Review:</strong> <%=comment.body%></li>
+			<li><strong>Rating:</strong> <%=comment.rating%> / 5</li>
 			<li><strong>Date Comment Was Posted:</strong> <%=comment.posted.toLocaleString()%></li>
 			<br>
 			<a href="/comment/<%=comment.id%>/edit">Edit Comment</a>

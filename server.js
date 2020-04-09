@@ -2,6 +2,8 @@ require(`dotenv`).config()
 const express = require(`express`)
 const server = express()
 const PORT = process.env.PORT
+const multer = require(`multer`)
+const upload = multer({dest : "uploads/"})
 require(`./db/db.js`)
 
 const bodyParser = require(`body-parser`)

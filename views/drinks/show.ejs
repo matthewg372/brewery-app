@@ -1,21 +1,20 @@
 <%- include(`../partials/header.ejs`)%>
 <h1>Show page for <%=drink.name%></h1>
-<ul>
+<ul >
 	<li><strong>Description:</strong> <%=drink.description%></li>
 	<li><strong>Date Drink was posted:</strong> <%=drink.posted.toLocaleString()%></li>
 	<li><strong>Breweries that carry:</strong> AFTER MVP</li>
-	<li><strong>Comments:</strong>
+	<li><strong>Comments:</strong></li>
+</ul>
 		<%comment.forEach(comment => {%>
-		<ul>
-			<li>Posted by: Username here</li>
-			<li>Name of Comment: <%= comment.title%></li>
-			<li>Date Comment Posted: <%=comment.posted.toLocaleString()%></li>
-			<li>Rating: <%= comment.rating%> / 5</li>
-			<li>Review: <%= comment.body%></li>
+		<ul class="commentsUL">
+			<li><strong>Posted by:</strong> Username here</li>
+			<li><strong>Name of Comment:</strong> <%= comment.title%></li>
+			<li><strong>Date Comment Posted:</strong> <%=comment.posted.toLocaleString()%></li>
+			<li><strong>Rating:</strong> <%= comment.rating%> / 5</li>
+			<li><strong>Review:</strong> <%= comment.body%></li>
 		</ul>
 		<%})%>
-	</li>
-</ul>
 
  
 <a href="/drink/<%=drink.id%>/edit">Edit Brewery Info</a>

@@ -3,6 +3,8 @@ const router = express.Router()
 const Brewery = require(`../models/brewery`)
 const User = require(`../models/user`)
 const Drink = require(`../models/drink`)
+const multer = require('multer')
+const upload = multer({dest:`uploads`})
 
 router.get("/manage", async (req, res,next) => {
 	try{
@@ -47,6 +49,20 @@ router.post("/manage/new", async (req,res,next) => {
 	}catch(err){
 		next(err)
 	}
+})
+
+ 
+router.post('/img/new', upload.single('img'), async (req, res, next) =>{
+	try{
+
+		console.log(`uploaded`)
+		console.log(`req.file`, req.file)
+		res.redirect(`/`)
+	}
+	catch(error){
+		next(error)
+	}
+
 })
 
 router.get('/:id', async(req, res, next) => {

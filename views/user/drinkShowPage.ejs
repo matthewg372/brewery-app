@@ -1,9 +1,9 @@
 <%- include(`../partials/header.ejs`)%>
 
-<h3> <%= drink.name %> </h3>
+<h3> <strong><%= drink.name %></strong> </h3>
 
 <div>
-		<p><%= drink.description %></p>
+		<p>Description: <%= drink.description %></p>
 		<p>Available At: <%= drink.brewery.name%></p>
 		<p>Posted: <%= drink.posted.toLocaleString() %></p>
 </div> 
@@ -26,19 +26,22 @@
 		<button>Add Comment</button>
 	</form>
 	<br>
+	<div class="commentsDiv">
+		
 	<h5>Comments:</h5>
 
 		<% comments.forEach(comment => { %>
-		<ul>
-			<li><strong><%= comment.title %></strong> </li>
-			<li>Rating: <%= comment.rating %> / 5</li>
+		<ul class="commentsUL" >
+			<li class="commentLiTitle"><strong><%= comment.title %></strong> </li>
+			<li><strong>Rating:</strong> <%= comment.rating %> / 5</li>
 			<li><%= comment.body %> </li>
-			<li><%= comment.posted.toLocaleString() %> </li>
+			<li><strong><%= comment.posted.toLocaleString() %></strong> </li>
 
 			
 		</ul>
 		
 		<%})%>
+	</div>
 
 </div>
 

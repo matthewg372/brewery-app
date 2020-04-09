@@ -1,10 +1,14 @@
 body {
-	background-color: lightgreen;
+	background-color: rgba(235, 228, 208, 1);
+	padding: 00px 20px 20px 20px;
 }
 header, header a {
 	background-color: black;
-	color: whitesmoke;
-
+	color: rgba(222, 247, 233, 1);
+	padding: 12px 12px 12px 12px;
+	border:solid black 2px;
+	border-bottom-right-radius: 15px;
+	border-bottom-left-radius: 15px;
 }
 header div {
 	display: flex;
@@ -12,4 +16,33 @@ header div {
 	margin-bottom: 20px;
 	margin-left: 20px;
 	margin-right: 20px;
+
+}
+
+#drinkDescription {
+	margin-bottom: 20px;
+}
+
+.commentsUL {
+	display:flex;
+	flex-direction: column;
+	border:solid black 2px;
+	border-radius: 15px;
+	/*width: 75%;*/
+	background-color: rgba(222, 247, 233, .75);
+	color:black;
+/*	padding-right: 150px;
+	padding-left: 150px;*/
+	list-style-type: none;
+	align-items: left;
+	margin-left:15%;
+	margin-right: 15%;
+	padding-right: 40px;
+
+}
+
+
+.commentLiTitle {
+	text-decoration: underline;
+
 }
