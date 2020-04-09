@@ -2,13 +2,22 @@
 <h1>Show page for <%=drink.name%></h1>
 <ul>
 	<li><strong>Description:</strong> <%=drink.description%></li>
-	<li>Date Drink was posted:</li>
-	<li>Breweries that carry :</li>
+	<li><strong>Date Drink was posted:</strong> <%=drink.posted.toLocaleString()%></li>
+	<li><strong>Breweries that carry:</strong> AFTER MVP</li>
 	<li><strong>Comments:</strong>
---comments--</li>
+		<%comment.forEach(comment => {%>
+		<ul>
+			<li>Posted by: Username here</li>
+			<li>Name of Comment: <%= comment.title%></li>
+			<li>Date Comment Posted: <%=comment.posted.toLocaleString()%></li>
+			<li>Rating: <%= comment.rating%> / 5</li>
+			<li>Review: <%= comment.body%></li>
+		</ul>
+		<%})%>
+	</li>
 </ul>
 
-Change below in ejs 
+ 
 <a href="/drink/<%=drink.id%>/edit">Edit Brewery Info</a>
 <form method="POST" action="/drink/<%=drink.id%>?_method=DELETE">
 	<button>delete</button>

@@ -23,9 +23,16 @@
 				<%}%>
 			</nav>
 			<nav>
+				
+				<% if(loggedIn){ %>
+					<a href="/auth/settings">Settings</a> |
+					<a href="/auth/logout">Logout</a> 
+				<%}else{%>
 				<a href="/auth/register">Register</a> |
-				<a href="/auth/login">Login </a> |
-				<a href="/auth/logout">Logout</a>
+				<a href="/auth/login">Login </a> 
+
+				<%}%>
+
 			</nav>
 		</div>
 	</header>

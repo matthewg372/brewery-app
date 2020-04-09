@@ -1,0 +1,11 @@
+<%- include(`../partials/header.ejs`)%>
+
+<h3><strong>Change Account Info Below :</strong></h2>
+
+	<h5><%=message%></h5>
+
+
+	<form method="POST" action="/auth/<%=user._id%>?_method=DELETE">
+		<button>Delete User Account</button>
+	</form>
+<%- include(`../partials/footer.ejs`)%>

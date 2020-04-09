@@ -24,18 +24,25 @@ router.post("/manage/new", async (req,res,next) => {
 	try{
 
 		//Change this to not have two of the same breweries made by users//
-		
-		const breweryToCreate = {
-			name: req.body.name,
-			city: req.body.city,
-			address: req.body.address,
-			state: req.body.state,
-			zipcode: req.body.zipcode,
-			user: req.session.userId
+		const foundBreweryWithName = await Brewery.find({name:req.body.name})
+		console.log("Newbrew",foundBreweryWithName )
+		if(!foundBreweryWithName){//if nothing in arr, name doesnt exist yet
+			const breweryToCreate = {
+				name: req.body.name,
+				city: req.body.city,
+				address: req.body.address,
+				state: req.body.state,
+				zipcode: req.body.zipcode,
+				user: req.session.userId
+			}
+			const createdBrewery = await Brewery.create(breweryToCreate)
+			req.session.message = `${req.body.name}`
+			res.redirect('/brewery/manage')
 		}
-		const createdBrewery = await Brewery.create(breweryToCreate)
-		req.session.message = `${req.body.name}`
-		res.redirect('/brewery/manage')
+		else{
+			req.session.message = `ERROR !!! Brewery with that name already exists`
+			res.redirect('/brewery/manage/new')
+		}
 
 	}catch(err){
 		next(err)

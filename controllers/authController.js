@@ -16,7 +16,7 @@ router.post(`/login`, async (req, res, next) => {
 		const foundUser = await User.findOne({username : req.body.username})
 		if(!foundUser){
 			req.session.message = "Invalid username or password"
-			res.redirect('auth/login')
+			res.redirect('/auth/login')
 		}
 		else{
 			const logInInfoIsValid = bcrypt.compareSync(req.body.password,foundUser.password);
@@ -99,6 +99,35 @@ console.log("addedUser",addedUser)
 	catch(error){
 		next(error)
 	}
+})
+
+router.get('/settings', async (req, res, next) => {
+ 	try{
+	 	if(req.session.loggedIn === true){
+	    	const loggedInUser = await User.findOne({username: req.session.username})
+	    	res.render('auth/settings.ejs', {
+	      		session: req.session,
+	      		user: loggedInUser
+	    	})
+	  	}else{
+	    	res.redirect("/")
+	  	}
+	}catch(err){
+  		next(err)
+	}
+})
+
+router.delete('/:id', async (req, res, next) => {
+  try{
+  	// const deletedComments = await Comment.remove({user: req.params.id})
+   //  const deletedBreweries = await Brewery.remove({user: req.params.id})
+
+    const deletedUser = await User.findByIdAndRemove(req.params.id)
+    req.session.destroy()
+    res.redirect('/')
+  }catch(err){
+  next(err)
+  }
 })
 
 module.exports = router

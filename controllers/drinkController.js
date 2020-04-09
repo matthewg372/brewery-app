@@ -3,6 +3,7 @@ const router = express.Router()
 const Brewery = require(`../models/brewery`)
 const User = require(`../models/user`)
 const Drink = require(`../models/drink`)
+const Comment = require(`../models/comments`)
 
 router.get(`/new`, async (req,res, next) => {
 	try{
@@ -37,7 +38,9 @@ router.post('/new', async (req, res, next) => {
 router.get(`/:id`,async (req,res, next) => {
 	try{
 		const foundDrink = await Drink.findById(req.params.id)
-		res.render(`drinks/show.ejs`,{drink: foundDrink})
+		const foundComments = await Comment.find({drink:foundDrink.id}).populate('drink')
+		console.log("FC",foundComments)
+		res.render(`drinks/show.ejs`,{drink: foundDrink,comment:foundComments})
 	}
 	catch(error){
 		next(error)
