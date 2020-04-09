@@ -1,0 +1,22 @@
+<%- include('../partials/header.ejs')%>
+<h3><strong>My Comments</strong></h3>
+
+
+		<%comments.forEach(comment=>{%>
+		<ul>
+			<li><strong>Drink Name:</strong> <%=comment.drink.name%></li>
+			<li><strong>Drink Description:</strong> <%=comment.drink.description%></li>
+			<li><strong>Comment Title:</strong> <%=comment.title%></li>
+			<li><strong>Rating:</strong> <%=comment.rating%> / 5</li>
+			<li><strong>Review:</strong> <%=comment.body%></li>
+			<li><strong>Date Comment Was Posted:</strong> <%=comment.posted.toLocaleString()%></li>
+			<br>
+			<a href="/comments/<%=comment.id%>/edit">Edit Comment</a>
+			<form method="POST" action="/comment/<%=comment.id%>?_method=DELETE">
+				<button>delete</button>
+			</form>
+		</ul>
+		<%})%>
+		
+
+<%- include('../partials/footer.ejs')%>

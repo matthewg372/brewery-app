@@ -11,8 +11,13 @@
 		<div>
 			<nav>
 				<a href="/">Home</a> |
-				<a href="">User</a> |
 				<a href="/general">Breweries</a> |
+				<% if(loggedIn){ %>
+					<a href="/comment/">My Comments</a> |
+				<%}%>
+
+
+
 				<% if(admin){%>
 					<a href="/brewery/manage">Manage Breweries</a>
 				<%}%>

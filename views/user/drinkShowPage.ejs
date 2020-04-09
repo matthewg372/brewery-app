@@ -9,10 +9,37 @@
 </div> 
 
 <div>
+	<h5>Add Your Review:</h5>
+	<form method="POST" action="/comment/<%= drink.id %>">
+		<fieldset>
+			<label for="title">Title:</label>
+			<input type="text" name="title" placeholder="Enter Title">
+		</fieldset>
+		<fieldset>
+			<label for="body">Review:</label>
+			<textarea type="textbox" name="body" placeholder="Enter Your Review"></textarea>
+		</fieldset>
+		<fieldset>
+			<label for="rating">Rating:</label>
+			<input type="number" name="rating" placeholder="out of 5"> / 5
+		</fieldset>
+		<button>Add Comment</button>
+	</form>
+	<br>
 	<h5>Comments:</h5>
-	<ul>
-		<li>comments here</li>
-	</ul>
+
+		<% comments.forEach(comment => { %>
+		<ul>
+			<li><strong><%= comment.title %></strong> </li>
+			<li>Rating: <%= comment.rating %> / 5</li>
+			<li><%= comment.body %> </li>
+			<li><%= comment.posted.toLocaleString() %> </li>
+
+			
+		</ul>
+		
+		<%})%>
+
 </div>
 
 

@@ -1,0 +1,17 @@
+<%- include('../partials/header.ejs')%>
+	<form method="POST" action="/comment/<%= drink.id %>">
+		<fieldset>
+			<label for="title">Title:</label>
+			<input type="text" name="title" placeholder="Enter Title">
+		</fieldset>
+		<fieldset>
+			<label for="body">Review:</label>
+			<textarea type="textbox" name="body" placeholder="Enter Your Review"></textarea>
+		</fieldset>
+		<fieldset>
+			<label for="rating">Rating:</label>
+			<input type="number" name="rating" placeholder="out of 5"> / 5
+		</fieldset>
+		<button>Add Comment</button>
+	</form>
+<%- include('../partials/footer.ejs')%>
