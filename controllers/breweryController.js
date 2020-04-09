@@ -24,7 +24,7 @@ router.post("/manage/new", async (req,res,next) => {
 	try{
 
 		//Change this to not have two of the same breweries made by users//
-		const foundBreweryWithName = await Brewery.find({name:req.body.name})
+		const foundBreweryWithName = await Brewery.findOne({name:req.body.name})
 		console.log("Newbrew",foundBreweryWithName )
 		if(!foundBreweryWithName){//if nothing in arr, name doesnt exist yet
 			const breweryToCreate = {

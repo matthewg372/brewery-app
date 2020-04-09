@@ -1,6 +1,8 @@
 const express =  require(`express`)
 const router = express.Router()
 const User = require(`../models/user`)
+const Brewery = require(`../models/brewery`)
+const Comment = require(`../models/comments`)
 const bcrypt = require(`bcrypt`)
 
 router.get(`/register`, (req,res) => {
@@ -119,8 +121,8 @@ router.get('/settings', async (req, res, next) => {
 
 router.delete('/:id', async (req, res, next) => {
   try{
-  	// const deletedComments = await Comment.remove({user: req.params.id})
-   //  const deletedBreweries = await Brewery.remove({user: req.params.id})
+  	const deletedComments = await Comment.remove({user: req.params.id})
+    const deletedBreweries = await Brewery.remove({user: req.params.id})
 
     const deletedUser = await User.findByIdAndRemove(req.params.id)
     req.session.destroy()
