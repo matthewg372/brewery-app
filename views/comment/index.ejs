@@ -12,9 +12,7 @@
 			<li><strong>Date Comment Was Posted:</strong> <%=comment.posted.toLocaleString()%></li>
 			<br>
 			<a href="/comment/<%=comment.id%>/edit">Edit Comment</a>
-			<form method="POST" action="/comment/<%=comment.id%>?_method=DELETE">
-				<button>delete</button>
-			</form>
+		
 		</ul>
 		<%})%>
 		

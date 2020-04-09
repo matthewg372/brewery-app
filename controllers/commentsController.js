@@ -49,5 +49,38 @@ router.get('/:id/edit', async (req,res,next) => {
 	}
 })
 
+router.delete(`/:id`, async (req, res, next) => {
+	try{
+		const deletedComment = await Comment.findByIdAndRemove(req.params.id)
+		console.log("redirected")
+		res.redirect(`/comment/`)
+	}
+	catch(error){
+		next(error)
+	}
+})
+router.put(`/:id`,async (req,res,next) => {
+	try{
+		const updatedComment = await Comment.findByIdAndUpdate(req.params.id,req.body,{new:true})
+		res.redirect(`/comment/`)
+	}
+	catch(error){
+		next(error)
+	}
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 module.exports = router
