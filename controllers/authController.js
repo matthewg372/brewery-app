@@ -5,6 +5,7 @@ const Brewery = require(`../models/brewery`)
 const Comment = require(`../models/comments`)
 const bcrypt = require(`bcrypt`)
 
+
 router.get(`/register`, (req,res) => {
 	res.render(`auth/register.ejs`)
 })

@@ -3,8 +3,6 @@ const router = express.Router()
 const Brewery = require(`../models/brewery`)
 const User = require(`../models/user`)
 const Drink = require(`../models/drink`)
-const multer = require('multer')
-const upload = multer({dest:`uploads`})
 
 router.get("/manage", async (req, res,next) => {
 	try{
@@ -52,24 +50,27 @@ router.post("/manage/new", async (req,res,next) => {
 })
 
  
-router.post('/img/new', upload.single('img'), async (req, res, next) =>{
-	try{
+// router.post('/img', upload.single('img'), async (req, res, next) =>{
+// 	try{
+// 		const createdImg = await Img.create({brewery: req.params.id},{img: req.file})
+// 		console.log(createdImg);
+// 		res.redirect(`/brewery/${req.params.id}`)
+// 	}
+// 	catch(error){
+// 		next(error)
+// 	}
 
-		console.log(`uploaded`)
-		console.log(`req.file`, req.file)
-		res.redirect(`/`)
-	}
-	catch(error){
-		next(error)
-	}
+// })
 
-})
+
 
 router.get('/:id', async(req, res, next) => {
 	const foundUser = await User.findById(req.params.userId)
 	const foundBrewery = await Brewery.findById(req.params.id).populate('user')
 	const foundDrinks = await Drink.find({brewery:foundBrewery._id})
+	// const foundImg = await Img.findOne()
 	res.render('brewery/show.ejs', {
+		// imgs: foundImg,
 		user: foundUser,
 		brewery: foundBrewery,
 		drinks:foundDrinks

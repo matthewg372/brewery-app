@@ -5,18 +5,24 @@
 			
 <p>Address: <%=brewery.address%>, <%=brewery.city %>, <%=brewery.state %>, <%=brewery.zipcode%>)</p>
 
-
-<form action="/brewery/img/new" method="POST" enctype="multipart/form-data">
+<form action="/brewery/<%= brewery.id%>" method="POST" enctype="multipart/form-data">
 	<label for="img">Upload Brewery Image</label>
 	<input type="file" name="img" id="img"/>
 	<button>Upload Image File</button>
 </form>
 
 
+
+<!-- image here for test -->
+
+
+<!-- <img Src="data:uploads/jpeg;base64,{{02e8a5bce747ab0e4228896f9e166073 }}" class="img-responsive"> -->
+
 <a href="/brewery/<%=brewery.id%>/edit">Edit Brewery Info</a>
 <form method="POST" action="/brewery/<%=brewery.id%>?_method=DELETE">
 	<button>delete</button>
 </form>
+		
 		
 	
 
