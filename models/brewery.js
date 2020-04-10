@@ -21,8 +21,7 @@ const brewerySchema = new mongoose.Schema({
 		required: true,
 	},
 	img:{
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'Img',
+		type: String,
 	},
 
 

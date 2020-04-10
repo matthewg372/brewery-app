@@ -5,6 +5,7 @@ const User = require(`../models/user`)
 const Drink = require(`../models/drink`)
 const Comment = require(`../models/comments`)
 
+
 router.get(`/new`, async (req,res, next) => {
 	try{
 		const foundBreweries = await Brewery.find({user:req.session.userId})

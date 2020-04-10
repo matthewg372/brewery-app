@@ -3,6 +3,9 @@ const router = express.Router()
 const Brewery = require(`../models/brewery`)
 const User = require(`../models/user`)
 const Drink = require(`../models/drink`)
+const multer = require('multer')
+const upload = multer({dest: "uploads/"})
+const Img = require(`../models/img`)
 
 router.get("/manage", async (req, res,next) => {
 	try{
@@ -25,7 +28,7 @@ router.post("/manage/new", async (req,res,next) => {
 
 		//Change this to not have two of the same breweries made by users//
 		const foundBreweryWithName = await Brewery.findOne({name:req.body.name})
-		console.log("Newbrew",foundBreweryWithName )
+		// console.log("Newbrew",foundBreweryWithName )
 		if(!foundBreweryWithName){//if nothing in arr, name doesnt exist yet
 			const breweryToCreate = {
 				name: req.body.name,
@@ -50,17 +53,18 @@ router.post("/manage/new", async (req,res,next) => {
 })
 
  
-// router.post('/img', upload.single('img'), async (req, res, next) =>{
-// 	try{
-// 		const createdImg = await Img.create({brewery: req.params.id},{img: req.file})
-// 		console.log(createdImg);
-// 		res.redirect(`/brewery/${req.params.id}`)
-// 	}
-// 	catch(error){
-// 		next(error)
-// 	}
+router.post('/:id', upload.single('img'), async (req, res, next) =>{
+	try{
+		const createdImg = await Img.create({img: req.file.filename})
+		const img = createdImg + ".jpg"
+		console.log(img);
+		res.redirect(`/brewery/${req.params.id}`)
+	}
+	catch(error){
+		next(error)
+	}
 
-// })
+})
 
 
 
