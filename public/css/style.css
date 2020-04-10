@@ -1,6 +1,8 @@
 body {
 	background-color: rgba(235, 228, 208, 1);
 	padding: 00px 20px 20px 20px;
+	
+	
 }
 header, header a {
 	background-color: black;
@@ -19,8 +21,62 @@ header div {
 
 }
 
+footer {
+	display: flex;
+	flex-direction: column;
+	background-color: black;
+	color: rgba(222, 247, 233, .75);
+	border-top: solid darkred 10px;
+	margin-top: 150px;
+	align-items: center;
+	position:static;
+}
+
+.descriptionDiv{
+	display:flex;
+	flex-direction: column;
+	margin-left: 5%;
+}
+
+#addReview{
+	display:flex;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	flex-direction: column;
+	margin-left: 5%;
+
+}
+
+.addCommentUL{
+	border: solid white 2px;
+}
+
+#button{
+	margin: 20px 0px;
+	padding:5px 5px;
+	border-radius: 10px;
+	-webkit-box-shadow: 0 8px 6px -6px black;
+	   -moz-box-shadow: 0 8px 6px -6px black;
+	        box-shadow: 0 8px 6px -6px black;
+}
+#textboxFieldset{
+	display:flex-inline;
+	flex-direction: row;
+	justify-content: flex-start;
+}
+#textboxFieldset > label{
+	display:flex-row;
+	vertical-align: top;
+}
+
+
 #drinkDescription {
 	margin-bottom: 20px;
+}
+
+.sectionLabel{
+	margin: 15px;
+	font-size: 30px
 }
 
 .commentsUL {
@@ -35,10 +91,14 @@ header div {
 	padding-left: 150px;*/
 	list-style-type: none;
 	align-items: left;
+	margin-top:10px;
 	margin-left:15%;
 	margin-right: 15%;
 	padding-right: 40px;
 
+	-webkit-box-shadow: 0 8px 6px -6px black;
+	   -moz-box-shadow: 0 8px 6px -6px black;
+	        box-shadow: 0 8px 6px -6px black;
 }
 
 
