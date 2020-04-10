@@ -2,48 +2,47 @@
 
 <h3> <strong><%= drink.name %></strong> </h3>
 
-<div>
+<div class="descriptionDiv">
 		<p>Description: <%= drink.description %></p>
 		<p>Available At: <%= drink.brewery.name%></p>
 		<p>Posted: <%= drink.posted.toLocaleString() %></p>
 </div> 
 
-<div>
-	<h5>Add Your Review:</h5>
-	<form method="POST" action="/comment/<%= drink.id %>">
-		<fieldset>
-			<label for="title">Title:</label>
-			<input type="text" name="title" placeholder="Enter Title">
-		</fieldset>
-		<fieldset>
-			<label for="body">Review:</label>
-			<textarea type="textbox" name="body" placeholder="Enter Your Review"></textarea>
-		</fieldset>
-		<fieldset>
-			<label for="rating">Rating:</label>
-			<input type="number" name="rating" placeholder="out of 5"> / 5
-		</fieldset>
-		<button>Add Comment</button>
-	</form>
-	<br>
+
+<h5 class="sectionLabel">Add Your Review:</h5>
+	<div id="addReview">
+		<form method="POST" action="/comment/<%= drink.id %>" >
+			<fieldset>
+				<label for="title">Title:</label>
+				<input type="text" name="title" placeholder="Enter Title">
+			</fieldset>
+			<fieldset id="textboxFieldset">
+				<label for="body">Review:</label>
+				<textarea type="textbox" name="body" placeholder="Enter Your Review"></textarea>
+			</fieldset>
+			<fieldset>
+				<label for="rating">Rating:</label>
+				<input type="number" name="rating" placeholder="out of 5"> / 5
+			</fieldset>
+			<button id="button">Add Comment</button>
+		</form>
+	</div>
+	
 	<div class="commentsDiv">
 		
-	<h5>Comments:</h5>
+		<h5 class="sectionLabel">Comments:</h5>
 
-		<% comments.forEach(comment => { %>
-		<ul class="commentsUL" >
-			<li class="commentLiTitle"><strong><%= comment.title %></strong> </li>
-			<li><strong>Rating:</strong> <%= comment.rating %> / 5</li>
-			<li><%= comment.body %> </li>
-			<li><strong><%= comment.posted.toLocaleString() %></strong> </li>
-
-			
-		</ul>
+			<% comments.forEach(comment => { %>
+			<ul class="commentsUL" >
+				<li class="commentLiTitle"><strong><%= comment.title %></strong> </li>
+				<li><strong>Rating:</strong> <%= comment.rating %> / 5</li>
+				<li><%= comment.body %> </li>
+				<li><strong><%= comment.posted.toLocaleString() %></strong> </li>	
+			</ul>
 		
-		<%})%>
+			<%})%>
 	</div>
 
-</div>
 
 
 <%- include(`../partials/footer.ejs`)%>

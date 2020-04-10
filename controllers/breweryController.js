@@ -1,8 +1,12 @@
 const express =  require(`express`)
 const router = express.Router()
+const multer = require('multer')
+const upload = multer({dest: "uploads/"})
 const Brewery = require(`../models/brewery`)
 const User = require(`../models/user`)
+const Img = require(`../models/img`)
 const Drink = require(`../models/drink`)
+const fs = require('fs')
 
 router.get("/manage", async (req, res,next) => {
 	try{
@@ -61,6 +65,37 @@ router.post("/manage/new", async (req,res,next) => {
 // 	}
 
 // })
+
+// router.post('/:id', upload.single('img'), async (req, res, next)=> {
+//   // req.file is the `avatar` file
+//   // req.body will hold the text fields, if there were any
+
+//   try{
+//   	console.log("req.file",req.file)
+//   	const createdImg = Img.create({path:req.file.path})
+//   	console.log("created Image", createdImg)
+//   	const updatedBrewery = Brewery.findByIdAndUpdate(req.params,{path:createdImg._id},{new:true})
+//   	console.log(updatedBrewery)
+//   	res.redirect(`/brewery/${req.params.id}`)
+  
+//   }
+//   catch(error){
+//   	next(error)
+//   }
+// })
+router.post('/:id', upload.single('img'), async (req, res, next) =>{
+	try{
+		// const createdImg = await Img.create({img: req.file})
+		// console.log(createdImg);
+		// fs.unlinkSync(req.file.path)
+		// console.log("image,file", req.file.path, req.file)
+		res.redirect(`/brewery/${req.params.id}`)
+
+	}
+	catch(error){
+		next(error)
+	}
+})
 
 
 

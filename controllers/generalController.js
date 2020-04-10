@@ -5,6 +5,7 @@ const User = require(`../models/user`)
 const Drink = require(`../models/drink`)
 const Comment = require(`../models/comments`)
 
+
 router.get("/", async (req, res, next) => {
 	const foundBreweries = await Brewery.find({}).populate('user')
 	res.render('user/index.ejs', {breweries: foundBreweries})
