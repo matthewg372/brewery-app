@@ -1,6 +1,12 @@
 <%- include(`../partials/header.ejs`)%>
 
 <h3><%= brewery.name %> </h3>
+
+<% if(brewery.img){%>
+
+	<img class="images" src="/brewery/<%=brewery.id%>/image/">
+<%}%>
+
 <div>
 	<p><%= brewery.address %></p>
 	<p><%= brewery.city %>, <%= brewery.state %>, <%= brewery.zipcode %></p>

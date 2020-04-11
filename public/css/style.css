@@ -38,6 +38,10 @@ footer {
 	margin-left: 5%;
 }
 
+.login-register-div {
+	margin:25px;
+}
+
 #addReview{
 	display:flex;
 	margin-top: 20px;

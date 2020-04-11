@@ -1,19 +1,21 @@
 <%- include(`../partials/header.ejs`)%>
 
-<h3><strong>Enter Registration Info below :</strong></h2>
+<h3 class="sectionLabel"><strong>Enter Login Info Below :</strong></h2>
+	<div  class="login-register-div">
+		
+		<h5><%=message%></h5>
 
-	<h5><%=message%></h5>
-
-	<form method="POST" action="/auth/login">
-		<fieldset>
-			<label for="username">Username :</label>
-			<input id="username" type="text" name="username" placeholder="Enter username">
-		</fieldset>
-		<fieldset>
-			<label for="password">Password :</label>
-			<input id="password" type="text" name="password" placeholder="Enter password">
-		</fieldset>
-		<button>Log in</button>
-	</form>
+		<form method="POST" action="/auth/login">
+			<fieldset>
+				<label for="username">Username :</label>
+				<input id="username" type="text" name="username" placeholder="Enter username">
+			</fieldset>
+			<fieldset>
+				<label for="password">Password :</label>
+				<input id="password" type="text" name="password" placeholder="Enter password">
+			</fieldset>
+			<button class="buttons">Log in</button>
+		</form>
+	</div>
 
 	<%- include(`../partials/footer.ejs`)%>

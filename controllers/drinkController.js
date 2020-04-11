@@ -4,7 +4,10 @@ const Brewery = require(`../models/brewery`)
 const User = require(`../models/user`)
 const Drink = require(`../models/drink`)
 const Comment = require(`../models/comments`)
-
+const Img = require(`../models/img`)
+const multer = require('multer')
+const fs = require('fs')
+const upload = multer({dest: "uploads/"})
 
 router.get(`/new`, async (req,res, next) => {
 	try{
@@ -61,6 +64,42 @@ router.get(`/:id/edit`,async (req,res, next) => {
 	catch(error){
 		next(error)
 	}
+})
+
+router.post('/:id', upload.single('img'), async (req, res, next) =>{
+	try{
+		console.log("req.file",req.file)
+		const imageData = fs.readFileSync(req.file.path)
+		const createdImg = await Img.create({
+			data: imageData,
+			contentType: req.file.mimetype,
+		})
+
+
+		console.log("createdImg",createdImg);
+	
+		const updatedDrink = await Drink.findByIdAndUpdate(req.params.id,
+			{img:createdImg.id}, 
+			{new:true}
+		)
+		console.log("updatedDrink,after",updatedDrink)
+		res.redirect(`/drink/${req.params.id}`)
+	}
+	catch(error){
+		next(error)
+	}
+})
+
+router.get(`/:id/image`, async (req, res, next) => {
+	try{
+		const foundDrink = await Drink.findById(req.params.id)
+		const foundImg = await Img.findById(foundDrink.img)
+		res.send(foundImg.data)
+	}
+	catch(error){
+		next(error)
+	}
+
 })
 
 router.delete(`/:id`, async (req, res, next) => {

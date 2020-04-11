@@ -13,7 +13,10 @@ const drinkSchema = new mongoose.Schema({
 		type: mongoose.Schema.Types.ObjectId,
 		required: true,
 		ref: 'Brewery',
-	}
+	},
+	img:{
+		type: String,
+	},
 })
 
 const Drink = mongoose.model(`Drink`, drinkSchema)

@@ -4,6 +4,10 @@
 <ul class="hide-bullets-UL">
 	<% breweries.forEach(brewery => {%>
 		<li class="li"> <a href="/general/<%= brewery.id %>"><%= brewery.name %>  </a>(<%= brewery.city %>,<%= brewery.state %>)</li>
+		<% if(brewery.img){%>
+
+			<img class="images" src="/brewery/<%=brewery.id%>/image/">
+		<%}%>
 
 
 	<%})%>

@@ -5,7 +5,10 @@
 		
 		<h2><strong><%=brewery.name%></strong></h2>
 
-		<img class="images" src="/brewery/<%=brewery.id%>/image/">
+		<% if(brewery.img){%>
+
+			<img class="images" src="/brewery/<%=brewery.id%>/image/">
+		<%}%>
 					
 		<p><strong>Address:</strong> <%=brewery.address%>, <%=brewery.city %>, <%=brewery.state %>, <%=brewery.zipcode%>)</p>
 	</div>

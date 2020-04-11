@@ -1,5 +1,10 @@
 <%- include(`../partials/header.ejs`)%>
-<h1>Show page for <%=drink.name%></h1>
+<h1><%=drink.name%></h1>
+
+<% if(drink.img){%>
+
+	<img class="images" src="/drink/<%=drink.id%>/image/">
+<%}%>
 <ul >
 	<li><strong>Description:</strong> <%=drink.description%></li>
 	<li><strong>Date Drink was posted:</strong> <%=drink.posted.toLocaleString()%></li>
@@ -16,11 +21,19 @@
 		</ul>
 		<%})%>
 
+<div>
+	<form action="/drink/<%= drink.id%>" method="POST" enctype="multipart/form-data">
+		<label for="img"><strong>Upload Drink Image:</strong></label>
+		<input type="file" name="img" id="img"/>
+		<button class="buttons">Upload Image File</button>
+	</form>
+	
+	<a class="linkButtons" href="/drink/<%=drink.id%>/edit">Edit Drink Info</a>
+	<form method="POST" action="/drink/<%=drink.id%>?_method=DELETE">
+		<button  class="buttons">Delete Drink</button>
+	</form>
+</div>
  
-<a href="/drink/<%=drink.id%>/edit">Edit Brewery Info</a>
-<form method="POST" action="/drink/<%=drink.id%>?_method=DELETE">
-	<button>delete</button>
-</form>
 
  
 

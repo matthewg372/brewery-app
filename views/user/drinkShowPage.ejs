@@ -2,10 +2,17 @@
 
 <h3> <strong><%= drink.name %></strong> </h3>
 
+<% if(drink.img){%>
+	<img class="images" src="/drink/<%=drink.id%>/image/">
+<%}%>
+
+
+
+
 <div class="descriptionDiv">
-		<p>Description: <%= drink.description %></p>
-		<p>Available At: <%= drink.brewery.name%></p>
-		<p>Posted: <%= drink.posted.toLocaleString() %></p>
+		<p><strong>Description:</strong> <%= drink.description %></p>
+		<p><strong>Available At:</strong> <%= drink.brewery.name%></p>
+		<p><strong>Posted:</strong> <%= drink.posted.toLocaleString() %></p>
 </div> 
 
 
