@@ -7,7 +7,13 @@
 </head>
 <body>
 	<header>
-	<h1>Brew Reviews</h1>
+		<div>
+			<h1>Brew Reviews</h1>
+			<% if(loggedIn){ %>
+			<h5>Logged in as <%=username%></h5>
+			<%}%>
+			
+		</div>
 		<div>
 			<nav>
 				<a href="/">Home</a> |
@@ -25,7 +31,7 @@
 			<nav>
 				
 				<% if(loggedIn){ %>
-					<a href="/auth/settings">Settings</a> |
+					<a href="/auth/settings"> Settings</a> |
 					<a href="/auth/logout">Logout</a> 
 				<%}else{%>
 				<a href="/auth/register">Register</a> |
