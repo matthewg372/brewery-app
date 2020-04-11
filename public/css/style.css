@@ -11,6 +11,7 @@ header, header a {
 	border:solid black 2px;
 	border-bottom-right-radius: 15px;
 	border-bottom-left-radius: 15px;
+	margin-bottom: 25px;
 }
 header div {
 	display: flex;
@@ -30,6 +31,15 @@ footer {
 	margin-top: 150px;
 	align-items: center;
 	position:static;
+}
+
+#main-image  {
+	display: flex;
+	width: 90%;
+	height: auto;
+	margin-top: 100px;
+	margin: 0 auto;
+	margin-top: 100px;
 }
 
 .descriptionDiv{
