@@ -2,10 +2,10 @@ require(`dotenv`).config()
 const express = require(`express`)
 const server = express()
 const PORT = process.env.PORT
+
 const multer = require('multer')
 const upload = multer({dest: "uploads/"})
-// const Img = require(`./models/img`)
-// const fs = require('fs')
+
 const db = require(`./db/db.js`)
 
 const bodyParser = require(`body-parser`)
@@ -46,26 +46,6 @@ const commentController = require(`./controllers/commentsController.js`)
 server.use(`/comment`, commentController)
 
 
-// server.post('/brewery/:id', upload.single('img'), (req, res) => {
-//     let img = fs.readFileSync(req.file.path);
-//  let encode_image = img.toString('base64');
-//   // Define a JSONobject for the image attributes for saving to database
-  
-//  let finalImg = {
-//       contentType: req.file.mimetype,
-//       image:  new Buffer(encode_image, 'base64')
-//    };
-// db.collection('imgs').insertOne(finalImg, (err, result) => {
-//     console.log(result)
- 
-//     if (err) return console.log(err)
- 
-//     console.log('saved to database')
-//     res.redirect('/')
-   
-     
-//   })
-// })
 
 server.get(`/`, (req,res) => {
 	res.render(`home.ejs`)

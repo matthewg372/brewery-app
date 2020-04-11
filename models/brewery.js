@@ -20,11 +20,10 @@ const brewerySchema = new mongoose.Schema({
 		type: Number,
 		required: true,
 	},
-	// img:{
-	// 	type: mongoose.Schema.Types.ObjectId,
-	// 	ref: 'Img',
-	// },
-	img:String,
+
+	img:{
+		type: String,
+	},
 
 
 	user:{

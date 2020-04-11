@@ -7,6 +7,7 @@ const Drink = require(`../models/drink`)
 const fs = require('fs')
 const Brewery = require(`../models/brewery`)
 const upload = multer({dest: "uploads/"})
+
 router.get("/manage", async (req, res,next) => {
 	try{
 		const foundBreweries = await Brewery.find({user: req.session.userId}).populate('user')
@@ -24,7 +25,7 @@ router.post("/manage/new", async (req,res,next) => {
 	try{
 		//Change this to not have two of the same breweries made by users//
 		const foundBreweryWithName = await Brewery.findOne({name:req.body.name})
-		console.log("Newbrew",foundBreweryWithName )
+		// console.log("Newbrew",foundBreweryWithName )
 		if(!foundBreweryWithName){//if nothing in arr, name doesnt exist yet
 			const breweryToCreate = {
 				name: req.body.name,
@@ -46,31 +47,7 @@ router.post("/manage/new", async (req,res,next) => {
 		next(err)
 	}
 })
-// router.post('/img', upload.single('img'), async (req, res, next) =>{
-// 	try{
-// 		const createdImg = await Img.create({brewery: req.params.id},{img: req.file})
-// 		console.log(createdImg);
-// 		res.redirect(`/brewery/${req.params.id}`)
-// 	}
-// 	catch(error){
-// 		next(error)
-// 	}
-// })
-// router.post('/:id', upload.single('img'), async (req, res, next)=> {
-//   // req.file is the `avatar` file
-//   // req.body will hold the text fields, if there were any
-//   try{
-//   	console.log("req.file",req.file)
-//   	const createdImg = Img.create({path:req.file.path})
-//   	console.log("created Image", createdImg)
-//   	const updatedBrewery = Brewery.findByIdAndUpdate(req.params,{path:createdImg._id},{new:true})
-//   	console.log(updatedBrewery)
-//   	res.redirect(`/brewery/${req.params.id}`)
-//   }
-//   catch(error){
-//   	next(error)
-//   }
-// })
+ 
 router.post('/:id', upload.single('img'), async (req, res, next) =>{
 	try{
 		console.log("req.file",req.file)
