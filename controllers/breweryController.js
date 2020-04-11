@@ -1,32 +1,27 @@
 const express =  require(`express`)
 const router = express.Router()
 const multer = require('multer')
-const upload = multer({dest: "uploads/"})
-const Brewery = require(`../models/brewery`)
 const User = require(`../models/user`)
 const Img = require(`../models/img`)
 const Drink = require(`../models/drink`)
 const fs = require('fs')
-
+const Brewery = require(`../models/brewery`)
+const upload = multer({dest: "uploads/"})
 router.get("/manage", async (req, res,next) => {
 	try{
 		const foundBreweries = await Brewery.find({user: req.session.userId}).populate('user')
 		res.render('brewery/manage.ejs', {
 			breweries: foundBreweries
 		})
-
 	}catch(err){
 		next(err)
 	}
 })
-
 router.get('/manage/new', (req, res) => {
 	res.render('brewery/new.ejs')
 })
-
 router.post("/manage/new", async (req,res,next) => {
 	try{
-
 		//Change this to not have two of the same breweries made by users//
 		const foundBreweryWithName = await Brewery.findOne({name:req.body.name})
 		console.log("Newbrew",foundBreweryWithName )
@@ -47,13 +42,10 @@ router.post("/manage/new", async (req,res,next) => {
 			req.session.message = `ERROR !!! Brewery with that name already exists`
 			res.redirect('/brewery/manage/new')
 		}
-
 	}catch(err){
 		next(err)
 	}
 })
-
- 
 // router.post('/img', upload.single('img'), async (req, res, next) =>{
 // 	try{
 // 		const createdImg = await Img.create({brewery: req.params.id},{img: req.file})
@@ -63,13 +55,10 @@ router.post("/manage/new", async (req,res,next) => {
 // 	catch(error){
 // 		next(error)
 // 	}
-
 // })
-
 // router.post('/:id', upload.single('img'), async (req, res, next)=> {
 //   // req.file is the `avatar` file
 //   // req.body will hold the text fields, if there were any
-
 //   try{
 //   	console.log("req.file",req.file)
 //   	const createdImg = Img.create({path:req.file.path})
@@ -77,7 +66,6 @@ router.post("/manage/new", async (req,res,next) => {
 //   	const updatedBrewery = Brewery.findByIdAndUpdate(req.params,{path:createdImg._id},{new:true})
 //   	console.log(updatedBrewery)
 //   	res.redirect(`/brewery/${req.params.id}`)
-  
 //   }
 //   catch(error){
 //   	next(error)
@@ -85,16 +73,38 @@ router.post("/manage/new", async (req,res,next) => {
 // })
 router.post('/:id', upload.single('img'), async (req, res, next) =>{
 	try{
-		// const createdImg = await Img.create({img: req.file})
-		// console.log(createdImg);
-		// fs.unlinkSync(req.file.path)
-		// console.log("image,file", req.file.path, req.file)
-		res.redirect(`/brewery/${req.params.id}`)
+		console.log("req.file",req.file)
+		const imageData = fs.readFileSync(req.file.path)
+		const createdImg = await Img.create({
+			data: imageData,
+			contentType: req.file.mimetype,
+		})
 
+
+		console.log("createdImg",createdImg);
+	
+		const updatedBrewery = await Brewery.findByIdAndUpdate(req.params.id,
+			{img:createdImg.id}, 
+			{new:true}
+		)
+		console.log("updatedBrewery,after",updatedBrewery)
+		res.redirect(`/brewery/${req.params.id}`)
 	}
 	catch(error){
 		next(error)
 	}
+})
+
+router.get(`/:id/image`, async (req, res, next) => {
+	try{
+		const foundBrewery = await Brewery.findById(req.params.id)
+		const foundImg = await Img.findById(foundBrewery.img)
+		res.send(foundImg.data)
+	}
+	catch(error){
+		next(error)
+	}
+
 })
 
 
@@ -111,7 +121,6 @@ router.get('/:id', async(req, res, next) => {
 		drinks:foundDrinks
 	})
 })
-
 router.get(`/:id/edit`, async (req, res, next) => {
 	try{
 		const foundBrewery = await Brewery.findById(req.params.id)
@@ -121,7 +130,6 @@ router.get(`/:id/edit`, async (req, res, next) => {
 		next(error)
 	}
 })
-
 router.delete(`/:id`, async (req, res, next) => {
 	try{
 		const deletedBrewery = await Brewery.findByIdAndRemove(req.params.id)
@@ -131,10 +139,8 @@ router.delete(`/:id`, async (req, res, next) => {
 		next(error)
 	}
 })
-
 router.put(`/:id`, async (req, res, next) => {
 	try{
-
 	  	const updatedBrewery = await Brewery.findByIdAndUpdate(req.params.id,req.body,{new:true})
 	  	//maybe need ^^.populate
 	  	res.redirect('/brewery/manage')
@@ -143,24 +149,5 @@ router.put(`/:id`, async (req, res, next) => {
 		next(error)
 	}
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 module.exports = router
+
