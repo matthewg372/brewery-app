@@ -1,9 +1,9 @@
 <%- include(`../partials/header.ejs`)%>
 
 <h3>Breweries:</h3>
-<ul>
+<ul class="hide-bullets-UL">
 	<% breweries.forEach(brewery => {%>
-		<li> <a href="/general/<%= brewery.id %>"><%= brewery.name %>  </a>(<%= brewery.city %>,<%= brewery.state %>)</li>
+		<li class="li"> <a href="/general/<%= brewery.id %>"><%= brewery.name %>  </a>(<%= brewery.city %>,<%= brewery.state %>)</li>
 
 
 	<%})%>

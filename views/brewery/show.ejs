@@ -1,31 +1,39 @@
 <%- include('../partials/header.ejs')%>
-<h3><strong><%=brewery.name%></strong></h3>
+<div class="sideBySide">
+	
+	<div class="infoDiv">
+		
+		<h2><strong><%=brewery.name%></strong></h2>
+
+		<img class="images" src="/brewery/<%=brewery.id%>/image/">
+					
+		<p><strong>Address:</strong> <%=brewery.address%>, <%=brewery.city %>, <%=brewery.state %>, <%=brewery.zipcode%>)</p>
+	</div>
+
+	<div class="buttonsDiv">
+		<form action="/brewery/<%= brewery.id%>" method="POST" enctype="multipart/form-data">
+			<label for="img"><strong>Upload Brewery Image:</strong></label>
+			<input type="file" name="img" id="img"/>
+			<button class="buttons">Upload Image File</button>
+		</form>
 
 
-			
-<p>Address: <%=brewery.address%>, <%=brewery.city %>, <%=brewery.state %>, <%=brewery.zipcode%>)</p>
 
-<form action="/brewery/<%= brewery.id%>" method="POST" enctype="multipart/form-data">
-	<label for="img">Upload Brewery Image</label>
-	<input type="file" name="img" id="img"/>
-	<button>Upload Image File</button>
-</form>
+		<!-- image here for test -->
 
 
-
-<!-- image here for test -->
-<img src="/brewery/<%=brewery.id%>/image/">
-
-<a href="/brewery/<%=brewery.id%>/edit">Edit Brewery Info</a>
-<form method="POST" action="/brewery/<%=brewery.id%>?_method=DELETE">
-	<button>delete</button>
-</form>
+		<a class="linkButtons" href="/brewery/<%=brewery.id%>/edit">Edit Brewery Info</a>
+		<form method="POST" action="/brewery/<%=brewery.id%>?_method=DELETE">
+			<button class="buttons">Delete Brewery</button>
+		</form>
+	</div>
+</div>
 		
 		
 	
 
 
-<h5><strong>Drinks:</strong></h5>
+<h5 class="sectionLabel"><strong>Drinks:</strong></h5>
 
 	<ul>
 		<%drinks.forEach(drink=>{%>
@@ -33,6 +41,6 @@
 		<%})%>
 		
 	</ul>
-	<a href="/drink/new">Add a Drink</a>
+	<a class="linkButtons" href="/drink/new">Add a Drink</a>
 
 <%- include('../partials/footer.ejs')%>

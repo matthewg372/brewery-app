@@ -47,17 +47,64 @@ footer {
 
 }
 
+.images {
+	max-width: 350px;
+	max-height: 350px;
+	margin: 20px;
+}
+
 .addCommentUL{
 	border: solid white 2px;
 }
 
-#button{
-	margin: 20px 0px;
-	padding:5px 5px;
+.li {
+	margin: 15px;
+	font-size: 18px;
+	color:black;
+}
+
+a {color:black;}
+
+
+.li a:hover {
+  color: darkgoldenrod;
+  margin: 5px;
+  font-size: 22px;
+}
+
+.linkButtons {
+	background-color: white;
+	color:black;
+	padding:7px;
 	border-radius: 10px;
 	-webkit-box-shadow: 0 8px 6px -6px black;
 	   -moz-box-shadow: 0 8px 6px -6px black;
 	        box-shadow: 0 8px 6px -6px black;
+}
+
+#button , .buttons {
+	display: flex;
+	margin: 20px 0px;
+	padding:5px 7px;
+	border-radius: 10px;
+	-webkit-box-shadow: 0 8px 6px -6px black;
+	   -moz-box-shadow: 0 8px 6px -6px black;
+	        box-shadow: 0 8px 6px -6px black;
+}
+
+.buttonsDiv{
+	display:inline;
+	flex-direction: column;
+}
+
+.sideBySide{
+	display:inline-flex;
+	margin-top: 3%;
+	align-items: center;
+}
+
+.hide-bullets-UL {
+	list-style-type: none;
 }
 #textboxFieldset{
 	display:flex-inline;
