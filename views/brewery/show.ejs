@@ -3,7 +3,7 @@
 	
 	<div class="infoDiv">
 		
-		<h2><strong><%=brewery.name%></strong></h2>
+		<h1><strong><%=brewery.name%></strong></h1>
 
 		<% if(brewery.img){%>
 
@@ -16,13 +16,12 @@
 	<div class="buttonsDiv">
 		<form action="/brewery/<%= brewery.id%>" method="POST" enctype="multipart/form-data">
 			<label for="img"><strong>Upload Brewery Image:</strong></label>
-			<input type="file" name="img" id="img"/>
+			<input class="upload" type="file" name="img" id="img"/>
 			<button class="buttons">Upload Image File</button>
 		</form>
 
 
 
-		<!-- image here for test -->
 
 
 		<a class="linkButtons" href="/brewery/<%=brewery.id%>/edit">Edit Brewery Info</a>
@@ -36,14 +35,15 @@
 	
 
 
-<h5 class="sectionLabel"><strong>Drinks:</strong></h5>
-
-	<ul>
+<h6 class="sectionLabel"><strong>Drinks:</strong></h6>
+	
+	<ul class="hide-bullets-UL">
 		<%drinks.forEach(drink=>{%>
-			<li><a href="/drink/<%=drink.id%>"><%=drink.name%></a></li>
+			<li class="li"><a href="/drink/<%=drink.id%>"><%=drink.name%></a></li>
 		<%})%>
 		
 	</ul>
+
 	<a class="linkButtons" href="/drink/new">Add a Drink</a>
 
 <%- include('../partials/footer.ejs')%>

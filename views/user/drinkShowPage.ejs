@@ -12,10 +12,10 @@
 <div class="descriptionDiv">
 		<p><strong>Description:</strong> <%= drink.description %></p>
 		<p><strong>Available At:</strong> <%= drink.brewery.name%></p>
-		<p><strong>Posted:</strong> <%= drink.posted.toLocaleString() %></p>
+		<p><strong>Posted:</strong> <%= drink.posted.toLocaleString()%></p>
 </div> 
 
-
+<% if(loggedIn) {%>
 <h5 class="sectionLabel">Add Your Review:</h5>
 	<div id="addReview">
 		<form method="POST" action="/comment/<%= drink.id %>" >
@@ -34,16 +34,17 @@
 			<button id="button">Add Comment</button>
 		</form>
 	</div>
-	
+	<%}%>
 	<div class="commentsDiv">
 		
 		<h5 class="sectionLabel">Comments:</h5>
 
 			<% comments.forEach(comment => { %>
 			<ul class="commentsUL" >
-				<li class="commentLiTitle"><strong><%= comment.title %></strong> </li>
+				<li ><strong >Title:</strong> <%= comment.title %> </li>
 				<li><strong>Rating:</strong> <%= comment.rating %> / 5</li>
-				<li><%= comment.body %> </li>
+				<li><strong>Comment:</strong> <%= comment.body %> </li>
+				<li><strong>Posted By:</strong> <%= comment.user.username %></li>
 				<li><strong><%= comment.posted.toLocaleString() %></strong> </li>	
 			</ul>
 		

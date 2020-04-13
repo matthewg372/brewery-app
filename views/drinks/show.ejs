@@ -5,26 +5,25 @@
 
 	<img class="images" src="/drink/<%=drink.id%>/image/">
 <%}%>
-<ul >
+<ul class="hide-bullets-UL">
 	<li><strong>Description:</strong> <%=drink.description%></li>
 	<li><strong>Date Drink was posted:</strong> <%=drink.posted.toLocaleString()%></li>
-	<li><strong>Breweries that carry:</strong> AFTER MVP</li>
 	<li><strong>Comments:</strong></li>
 </ul>
 		<%comment.forEach(comment => {%>
 		<ul class="commentsUL">
-			<li><strong>Posted by:</strong> Username here</li>
+			<li><strong>Posted by:</strong> <%=comment.user.username%></li>
 			<li><strong>Name of Comment:</strong> <%= comment.title%></li>
-			<li><strong>Date Comment Posted:</strong> <%=comment.posted.toLocaleString()%></li>
 			<li><strong>Rating:</strong> <%= comment.rating%> / 5</li>
 			<li><strong>Review:</strong> <%= comment.body%></li>
+			<li><strong>Posted on:</strong> <%=comment.posted.toLocaleString()%></li>
 		</ul>
 		<%})%>
 
 <div>
 	<form action="/drink/<%= drink.id%>" method="POST" enctype="multipart/form-data">
 		<label for="img"><strong>Upload Drink Image:</strong></label>
-		<input type="file" name="img" id="img"/>
+		<input class="upload" type="file" name="img" id="img"/>
 		<button class="buttons">Upload Image File</button>
 	</form>
 	

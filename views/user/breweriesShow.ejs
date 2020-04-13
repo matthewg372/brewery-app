@@ -7,15 +7,15 @@
 	<img class="images" src="/brewery/<%=brewery.id%>/image/">
 <%}%>
 
-<div>
-	<p><%= brewery.address %></p>
-	<p><%= brewery.city %>, <%= brewery.state %>, <%= brewery.zipcode %></p>
+<div class="address-div">
+	<p> <strong>Address:</strong> <%= brewery.address %></p>
+	<p> <strong>Location:</strong> <%= brewery.city %>, <%= brewery.state %>, <%= brewery.zipcode %></p>
 </div>
 <div id="drinksUL">
 	<h5>Drinks:</h5>
-	<ul>
+	<ul class="hide-bullets-UL">
 	<% drinks.forEach(drink => {%>
-		<li><a href="/general/drink/<%= drink.id %>"><%= drink.name %></a></li>
+		<li class="li"><a href="/general/drink/<%= drink.id %>"><%= drink.name %></a></li>
 
 
 	<%})%>

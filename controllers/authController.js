@@ -90,8 +90,8 @@ router.post(`/register`, async (req, res, next) => {
 console.log("addedUser",addedUser)
 			const createdUser = await User.create(addedUser)
 			req.session.loggedIn = true
-			req.session.admin = foundUser.admin
-			req.session.userId = createdUser._Id
+			req.session.admin = createdUser.admin
+			req.session.userId = createdUser._id
 			req.session.username = createdUser.username
 			req.session.message = "Successfully Registered An Account"
 

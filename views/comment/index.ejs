@@ -11,7 +11,7 @@
 			<li><strong>Rating:</strong> <%=comment.rating%> / 5</li>
 			<li><strong>Date Comment Was Posted:</strong> <%=comment.posted.toLocaleString()%></li>
 			<br>
-			<a href="/comment/<%=comment.id%>/edit">Edit Comment</a>
+			<a id="editButton"href="/comment/<%=comment.id%>/edit">Edit Comment</a>
 		
 		</ul>
 		<%})%>

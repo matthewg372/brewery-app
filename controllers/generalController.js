@@ -15,7 +15,7 @@ router.get("/", async (req, res, next) => {
 router.get(`/drink/:id`,async (req,res, next) => {
 	try{
 		const foundDrink = await Drink.findById(req.params.id).populate('brewery')
-		const foundComments = await Comment.find({drink: req.params.id})
+		const foundComments = await Comment.find({drink: req.params.id}).populate("user")
 		console.log(foundDrink);
 		res.render(`user/drinkShowPage.ejs`,{
 			drink: foundDrink,

@@ -42,7 +42,7 @@ router.post('/new', async (req, res, next) => {
 router.get(`/:id`,async (req,res, next) => {
 	try{
 		const foundDrink = await Drink.findById(req.params.id)
-		const foundComments = await Comment.find({drink:foundDrink.id}).populate('drink')
+		const foundComments = await Comment.find({drink:foundDrink.id}).populate('drink').populate('user')
 		console.log("FC",foundComments)
 		res.render(`drinks/show.ejs`,{drink: foundDrink,comment:foundComments})
 	}

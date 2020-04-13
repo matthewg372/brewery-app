@@ -16,10 +16,10 @@
 			<label for="rating">Rating:</label>
 			<input type="number" name="rating" value="<%= comment.rating %>"> / 5
 		</fieldset>
-		<button>Add Comment</button>
+		<button class="editComment">Add Comment</button>
 	</form>
 	<form method="POST" action="/comment/<%=comment.id%>?_method=DELETE">
-		<button>Delete Comment</button>
+		<button class="editComment">Delete Comment</button>
 	</form>
 
 
