@@ -8,18 +8,7 @@
 <ul class="hide-bullets-UL">
 	<li><strong>Description:</strong> <%=drink.description%></li>
 	<li><strong>Date Drink was posted:</strong> <%=drink.posted.toLocaleString()%></li>
-	<li><strong>Comments:</strong></li>
 </ul>
-		<%comment.forEach(comment => {%>
-		<ul class="commentsUL">
-			<li><strong>Posted by:</strong> <%=comment.user.username%></li>
-			<li><strong>Name of Comment:</strong> <%= comment.title%></li>
-			<li><strong>Rating:</strong> <%= comment.rating%> / 5</li>
-			<li><strong>Review:</strong> <%= comment.body%></li>
-			<li><strong>Posted on:</strong> <%=comment.posted.toLocaleString()%></li>
-		</ul>
-		<%})%>
-
 <div>
 	<form action="/drink/<%= drink.id%>" method="POST" enctype="multipart/form-data">
 		<label for="img"><strong>Upload Drink Image:</strong></label>
@@ -32,6 +21,17 @@
 		<button  class="buttons">Delete Drink</button>
 	</form>
 </div>
+	<strong class="sectionLabel">Comments:</strong>
+		<%comment.forEach(comment => {%>
+		<ul class="commentsUL">
+			<li><strong>Posted by:</strong> <%=comment.user.username%></li>
+			<li><strong>Name of Comment:</strong> <%= comment.title%></li>
+			<li><strong>Rating:</strong> <%= comment.rating%> / 5</li>
+			<li><strong>Review:</strong> <%= comment.body%></li>
+			<li><strong>Posted on:</strong> <%=comment.posted.toLocaleString()%></li>
+		</ul>
+		<%})%>
+
  
 
  
